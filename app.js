@@ -68,6 +68,14 @@ const store = {
   currentAnswer: ''
 };
 
+function music(){
+  var audio = new Audio('audio/alexander-nakarada-vetur-frosti.mp3');
+  audio.loop = true;
+  audio.play();
+  audio.volume = 0.05;  
+}
+
+
 function generateMainPage() {
   return `
       <div class="mainPage">
@@ -147,6 +155,8 @@ function generateFinalPage(){
 function handleStartButton(){
   $('main').on('click','#startquiz', function(e){
     store.quizStarted = true;
+    var turn = new Audio('audio/page-turn.mp3');
+    turn.play();
     render();
   });
 }
@@ -157,6 +167,8 @@ function handleTryAgainButton(){
     store.score = 0;
     store.questionNumber = 0;
     store.feedbackGiven = true;
+    var turn = new Audio('audio/page-turn.mp3');
+    turn.play();
     render();
   });
 }
@@ -168,6 +180,8 @@ function handleHomeButton(){
     store.questionNumber = 0;
     store.feedbackGiven = true;
     store.quizStarted = false;
+    var turn = new Audio('audio/page-turn.mp3');
+    turn.play();
     render();
   });
 }
@@ -180,7 +194,8 @@ function handleSubmitButton(){
     if(store.currentAnswer===store.questions[store.questionNumber].correctAnswer){
       store.score++;
     }
-    console.log(store.currentAnswer);
+    var turn = new Audio('audio/page-turn.mp3');
+    turn.play();
     render();
   });
 }
@@ -190,6 +205,8 @@ function handleContinueButton(){
     store.feedbackGiven = true;
     store.currentAnswer = '';
     store.questionNumber++;
+    var turn = new Audio('audio/page-turn.mp3');
+    turn.play();
     render();
   });
 }
@@ -215,5 +232,6 @@ function main() {
   handleContinueButton();
   handleTryAgainButton();
   handleHomeButton();
+  music();
 }
 $(main);
