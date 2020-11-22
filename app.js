@@ -156,10 +156,10 @@ function generateFinalPage(){
 
 function handleStartButton(){
   $('main').on('click','#startquiz', function(e){
+    backgroundMusic();
     store.quizStarted = true;
     var turn = new Audio('audio/page-turn.mp3');
     turn.play();
-    backgroundMusic();
     render();
   });
 }
