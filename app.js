@@ -68,12 +68,14 @@ const store = {
   currentAnswer: ''
 };
 
-function music(){
-  var audio = new Audio('audio/alexander-nakarada-vetur-frosti.mp3');
-  audio.loop = true;
-  audio.play();
-  audio.volume = 0.05;  
+
+
+function backgroundMusic(){
+  const music = new Audio('audio/vetur-frosti.mp3');
+  music.volume = 0.05;  
+  music.play();    
 }
+
 
 
 function generateMainPage() {
@@ -157,6 +159,7 @@ function handleStartButton(){
     store.quizStarted = true;
     var turn = new Audio('audio/page-turn.mp3');
     turn.play();
+    backgroundMusic();
     render();
   });
 }
@@ -232,6 +235,5 @@ function main() {
   handleContinueButton();
   handleTryAgainButton();
   handleHomeButton();
-  music();
 }
 $(main);
